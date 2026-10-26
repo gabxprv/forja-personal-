@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>La Forja Personal - Sistema Estoico</title>
+    <!-- Vinculamos la hoja de estilos CSS externa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🏛️ LA FORJA PERSONAL</h1>
+        <div class="subtitle">Construye tu imperio tarea a tarea</div>
+    </header>
+
+    <!-- BANNER MOTIVACIONAL (SI AYER LOGRÓ EL 100%) -->
+    <div class="banner-motivacion" id="banner-exito">
+        <h3>🔥 ¡VICTORIA DE AYER RECOMPENSADA!</h3>
+        <p id="texto-exito">Cargando mensaje...</p>
+    </div>
+
+    <!-- BANNER DE ALERTA ESTOICA (SI NO HA HECHO NADA HOY) -->
+    <div class="alerta-inercia" id="banner-alerta">
+        <h3 id="alerta-titulo">⚠️ LLAMADO A LA REALIDAD</h3>
+        <p id="alerta-texto">Cargando advertencia...</p>
+    </div>
+
+    <!-- TARJETA DE PERFIL Y PUNTOS GLOBALES -->
+    <div class="perfil-card">
+        <div>
+            <div class="label-forjador">FORJADOR:</div>
+            <input type="text" class="input-usuario" id="nombre-usuario" value="Gabriel" oninput="guardarDatos()">
+        </div>
+        <div class="puntos-badge">
+            ⚡ <span id="puntos-totales">0</span> Pts (Lv.<span id="nivel-casa">1</span>)
+        </div>
+    </div>
+
+    <!-- VISOR DE CONSTRUCCIÓN DE LA CASITA -->
+    <div class="visor-construccion">
+        <div class="casita-emoji" id="emoji-casa">🧱</div>
+        <div class="estado-casa-texto" id="texto-estado">Terreno listo para cimientos</div>
+        
+        <div class="barra-contenedor">
+            <div class="barra-progreso" id="barra-fill"></div>
+            <div class="porcentaje-texto" id="porcentaje-txt">0% del Día Completado</div>
+        </div>
+    </div>
+
+    <!-- TAREAS DIARIAS -->
+    <div class="seccion-card">
+        <div class="titulo-seccion">
+            <span>🔥 Tareas Diarias (+5 pts c/u)</span>
+            <span class="contador-badge" id="contador-diarias">0/7</span>
+        </div>
+
+        <div class="tarea-item" id="diaria-0" onclick="toggleTarea(this, 'diaria', 5, 0)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">📱 Dejar el celular 5 min al despertar</div>
+        </div>
+
+        <div class="tarea-item" id="diaria-1" onclick="toggleTarea(this, 'diaria', 5, 1)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">📖 Leer 10 - 15 minutos</div>
+        </div>
+
+        <div class="tarea-item" id="diaria-2" onclick="toggleTarea(this, 'diaria', 5, 2)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">🥗 Comer con criterio (al menos 1 comida limpia)</div>
+        </div>
+
+        <div class="tarea-item" id="diaria-3" onclick="toggleTarea(this, 'diaria', 5, 3)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">🧘‍♂️ Pausa de 3 segs antes de una decisión impulsiva</div>
+        </div>
+
+        <div class="tarea-item" id="diaria-4" onclick="toggleTarea(this, 'diaria', 5, 4)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">💧 Tomar agua suficiente durante el día</div>
+        </div>
+
+        <div class="tarea-item" id="diaria-5" onclick="toggleTarea(this, 'diaria', 5, 5)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">🛌 Dormir a hora fija programada</div>
+        </div>
+
+        <div class="tarea-item" id="diaria-6" onclick="toggleTarea(this, 'diaria', 5, 6)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">✍️ Escribir / Reflexionar al cierre del día</div>
+        </div>
+    </div>
+
+    <!-- TAREAS SEMANALES -->
+    <div class="seccion-card">
+        <div class="titulo-seccion">
+            <span>⚡ Metas Semanales (+15 pts c/u)</span>
+        </div>
+
+        <div class="tarea-item" id="semanal-0" onclick="toggleTarea(this, 'semanal', 15, 0)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">🥊 Ejercicio (Calistenia / Boxeo) — 3-4 veces</div>
+        </div>
+
+        <div class="tarea-item" id="semanal-1" onclick="toggleTarea(this, 'semanal', 15, 1)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">💰 Ahorrar $100 pesos a la meta personal</div>
+        </div>
+
+        <div class="tarea-item" id="semanal-2" onclick="toggleTarea(this, 'semanal', 15, 2)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">🙏 Agradecer (Escribir o decir algo que valoras)</div>
+        </div>
+
+        <div class="tarea-item" id="semanal-3" onclick="toggleTarea(this, 'semanal', 15, 3)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">⚖️ Acto de Justicia (Ayudar sin que se note)</div>
+        </div>
+
+        <div class="tarea-item" id="semanal-4" onclick="toggleTarea(this, 'semanal', 15, 4)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">🧠 Aprender algo nuevo de Código o Nutrición</div>
+        </div>
+
+        <div class="tarea-item" id="semanal-5" onclick="toggleTarea(this, 'semanal', 15, 5)">
+            <div class="checkbox-custom">✓</div>
+            <div class="tarea-texto">🚀 Avanzar en el mini proyecto personal</div>
+        </div>
+    </div>
+
+    <!-- DIARIO EMOCIONAL -->
+    <div class="seccion-card">
+        <div class="titulo-seccion">
+            <span>🧠 Estado de Ánimo y Reflexión</span>
+        </div>
+        <div class="grid-animo">
+            <div class="btn-animo" onclick="seleccionarAnimo('🔥')">🔥</div>
+            <div class="btn-animo" onclick="seleccionarAnimo('🧘')">🧘</div>
+            <div class="btn-animo" onclick="seleccionarAnimo('🔋')">🔋</div>
+            <div class="btn-animo" onclick="seleccionarAnimo('💥')">💥</div>
+        </div>
+        <textarea id="texto-reflexion" placeholder="¿Cómo te sentiste hoy? ¿Qué aprendiste?" oninput="guardarDatos()"></textarea>
+    </div>
+
+    <button class="btn-reset" onclick="reiniciarDiaManual()">🔄 Reiniciar Día Manualmente</button>
+
+    <footer>
+        Tu disciplina de hoy es la armadura de tu mañana.
+    </footer>
+
+    <script>
+        const frasesInerciaPorDia = {
+            1: { titulo: "⚠️ ADVERTENCIA DE LUNES", texto: "Hola. Noto que hoy no has hecho nada. Arrancar la semana en ceros entierra tu futuro. Lo que dejes de hacer hoy, lo pagarás caro el viernes." },
+            2: { titulo: "⚠️ LLAMADO DE MARTES", texto: "El tiempo pasa igual si trabajas o si procrastinas, pero el resultado es opuesto. ¿Vas a desperdiciar otro día más?" },
+            3: { titulo: "⚠️ MITAD DE SEMANA EN CERO", texto: "El estancamiento es una decisión silenciosa. Nadie va a venir a salvarte. Muévete, aunque sea con una sola tarea." },
+            4: { titulo: "⚠️ ALERTA DE JUEVES", texto: "Cero progreso detectado. Tu casita virtual sigue en el lodo. ¿De verdad quieres que tu esfuerzo se quede en intenciones vacías?" },
+            5: { titulo: "⚠️ LLAMADO DE VIERNES", texto: "Muchos se escudan en que es fin de semana para rendirse. No seas uno de ellos. Demuéstrate de qué estás hecho." },
+            6: { titulo: "⚠️ SÁBADO PERDIDO", texto: "El descanso es merecido solo cuando hay esfuerzo previo. No puedes descansar de no haber hecho nada." },
+            7: { titulo: "⚠️ DOMINGO DE REFLEXIÓN", texto: "Si hoy no forjas nada, mañana empezarás la semana con desventaja. Levántate y marca al menos una tarea." }
+        };
+
+        const frasesVictoria = [
+            "¡Excelente trabajo ayer! Cumpliste todas tus tareas. Hoy es un nuevo día para mantener el estándar de excelencia.",
+            "Demostraste de qué estás hecho conquistando el 100% de ayer. Mantén esa inercia ganadora hoy.",
+            "Tu fortaleza se construye con días perfectos como el de ayer. Afronta hoy con la misma firmeza estoica.",
+            "Ayer dominaste tus impulsos y cumpliste con tu palabra. Hoy repite el proceso sin bajar la guardia."
+        ];
+
+        const etapasCasita = [
+            { pts: 0, emoji: '🧱', texto: 'Terreno y cimientos iniciales' },
+            { pts: 100, emoji: '🪵', texto: 'Nivel 1: Vigas y estructura de madera' },
+            { pts: 200, emoji: '🛖', texto: 'Nivel 2: Muros firmes levantados' },
+            { pts: 300, emoji: '🏠', texto: 'Nivel 3: Techo, puertas y ventanas' },
+            { pts: 400, emoji: '🏡', texto: 'Nivel 4: Hogar consolidado con jardín' },
+            { pts: 500, emoji: '🏰', texto: 'Nivel 5: ¡Fortaleza Estoica Completa!' }
+        ];
+
+        let puntosTotales = parseInt(localStorage.getItem('forja_puntos')) || 0;
+        let estadoAnimoActual = localStorage.getItem('forja_animo') || '🧘';
+
+        let fechaUltimaCarga = localStorage.getItem('forja_fecha_carga') || new Date().toDateString();
+        let semanaUltimaCarga = localStorage.getItem('forja_semana_num') || obtenerNumeroSemana(new Date());
+
+        let tareasDiariasEstados = JSON.parse(localStorage.getItem('forja_diarias_estado')) || [false, false, false, false, false, false, false];
+        let tareasSemanalesEstados = JSON.parse(localStorage.getItem('forja_semanales_estado')) || [false, false, false, false, false, false];
+
+        window.onload = function() {
+            document.getElementById('nombre-usuario').value = localStorage.getItem('forja_usuario') || 'Gabriel';
+            document.getElementById('texto-reflexion').value = localStorage.getItem('forja_ref') || '';
+
+            verificarYReiniciarAutomático();
+            cargarEstadosCheckboxes();
+            actualizarInterfazGlobal();
+            verificarInercia();
+        };
+
+        function obtenerNumeroSemana(d) {
+            d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+            d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+            var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+            var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+            return weekNo;
+        }
+
+        function verificarYReiniciarAutomático() {
+            const fechaHoy = new Date().toDateString();
+            const semanaHoy = obtenerNumeroSemana(new Date());
+
+            if (fechaUltimaCarga !== fechaHoy) {
+                const todasCumplidas = tareasDiariasEstados.length > 0 && tareasDiariasEstados.every(st => st === true);
+
+                if (todasCumplidas) {
+                    localStorage.setItem('forja_mostrar_exito', 'true');
+                } else {
+                    localStorage.removeItem('forja_mostrar_exito');
+                }
+
+                tareasDiariasEstados = [false, false, false, false, false, false, false];
+                localStorage.setItem('forja_diarias_estado', JSON.stringify(tareasDiariasEstados));
+                localStorage.setItem('forja_ref', '');
+                document.getElementById('texto-reflexion').value = "";
+
+                fechaUltimaCarga = fechaHoy;
+                localStorage.setItem('forja_fecha_carga', fechaHoy);
+            }
+
+            if (semanaUltimaCarga !== semanaHoy) {
+                tareasSemanalesEstados = [false, false, false, false, false, false];
+                localStorage.setItem('forja_semanales_estado', JSON.stringify(tareasSemanalesEstados));
+
+                semanaUltimaCarga = semanaHoy;
+                localStorage.setItem('forja_semana_num', semanaHoy);
+            }
+
+            if (localStorage.getItem('forja_mostrar_exito') === 'true') {
+                const bannerExito = document.getElementById('banner-exito');
+                const fraseAzar = frasesVictoria[Math.floor(Math.random() * frasesVictoria.length)];
+                document.getElementById('texto-exito').innerText = fraseAzar;
+                bannerExito.style.display = 'block';
+            }
+        }
+
+        function cargarEstadosCheckboxes() {
+            tareasDiariasEstados.forEach((estado, idx) => {
+                const el = document.getElementById(`diaria-${idx}`);
+                if (el && estado) el.classList.add('completada');
+                else if (el) el.classList.remove('completada');
+            });
+
+            tareasSemanalesEstados.forEach((estado, idx) => {
+                const el = document.getElementById(`semanal-${idx}`);
+                if (el && estado) el.classList.add('completada');
+                else if (el) el.classList.remove('completada');
+            });
+        }
+
+        function toggleTarea(elemento, tipo, valorPts, index) {
+            elemento.classList.toggle('completada');
+            const estaCompletada = elemento.classList.contains('completada');
+
+            if (tipo === 'diaria') {
+                tareasDiariasEstados[index] = estaCompletada;
+                localStorage.setItem('forja_diarias_estado', JSON.stringify(tareasDiariasEstados));
+            } else if (tipo === 'semanal') {
+                tareasSemanalesEstados[index] = estaCompletada;
+                localStorage.setItem('forja_semanales_estado', JSON.stringify(tareasSemanalesEstados));
+            }
+
+            if (estaCompletada) {
+                puntosTotales += valorPts;
+            } else {
+                puntosTotales -= valorPts;
+                if (puntosTotales < 0) puntosTotales = 0;
+            }
+
+            guardarDatos();
+            actualizarInterfazGlobal();
+            verificarInercia();
+        }
+
+        function seleccionarAnimo(animo) {
+            estadoAnimoActual = animo;
+            guardarDatos();
+            alert("Estado de ánimo guardado: " + animo);
+        }
+
+        function actualizarInterfazGlobal() {
+            document.getElementById('puntos-totales').innerText = puntosTotales;
+
+            let nivel = Math.floor(puntosTotales / 100) + 1;
+            document.getElementById('nivel-casa').innerText = nivel;
+
+            let etapaActual = etapasCasita[0];
+            for (let i = etapasCasita.length - 1; i >= 0; i--) {
+                if (puntosTotales >= etapasCasita[i].pts) {
+                    etapaActual = etapasCasita[i];
+                    break;
+                }
+            }
+
+            document.getElementById('emoji-casa').innerText = etapaActual.emoji;
+            document.getElementById('texto-estado').innerText = etapaActual.texto;
+
+            const hechasDiarias = tareasDiariasEstados.filter(st => st === true).length;
+            let pct = Math.round((hechasDiarias / 7) * 100);
+
+            document.getElementById('barra-fill').style.width = pct + '%';
+            document.getElementById('porcentaje-txt').innerText = pct + '% del Día Completado';
+            document.getElementById('contador-diarias').innerText = `${hechasDiarias}/7`;
+        }
+
+        function verificarInercia() {
+            const hechasDiarias = tareasDiariasEstados.filter(st => st === true).length;
+            const banner = document.getElementById('banner-alerta');
+
+            if (hechasDiarias === 0) {
+                let diaSemana = new Date().getDay();
+                if (diaSemana === 0) diaSemana = 7;
+
+                let alertaInfo = frasesInerciaPorDia[diaSemana];
+                document.getElementById('alerta-titulo').innerText = alertaInfo.titulo;
+                document.getElementById('alerta-texto').innerText = alertaInfo.texto;
+                banner.style.display = 'block';
+            } else {
+                banner.style.display = 'none';
+                document.getElementById('banner-exito').style.display = 'none';
+                localStorage.removeItem('forja_mostrar_exito');
+            }
+        }
+
+        function guardarDatos() {
+            localStorage.setItem('forja_puntos', puntosTotales);
+            localStorage.setItem('forja_usuario', document.getElementById('nombre-usuario').value);
+            localStorage.setItem('forja_animo', estadoAnimoActual);
+            localStorage.setItem('forja_ref', document.getElementById('texto-reflexion').value);
+        }
+
+        function reiniciarDiaManual() {
+            if(confirm("¿Reiniciar las tareas diarias para un nuevo comienzo? (Tus puntos acumulados no se perderán)")) {
+                tareasDiariasEstados = [false, false, false, false, false, false, false];
+                localStorage.setItem('forja_diarias_estado', JSON.stringify(tareasDiariasEstados));
+                document.getElementById('texto-reflexion').value = "";
+                cargarEstadosCheckboxes();
+                actualizarInterfazGlobal();
+                verificarInercia();
+            }
+        }
+    </script>
+</body>
+</html>
