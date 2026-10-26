@@ -1,0 +1,371 @@
+/* ========================================================
+   PALETA DE COLORES Y VARIABLES GLOBALES (ESTILO ESTOICO)
+   ======================================================== */
+:root {
+    --bg-color: #090d16;          /* Fondo principal azul noche ultra oscuro */
+    --card-bg: #111827;           /* Fondo de las tarjetas en tono carbón */
+    --card-border: #1f2937;       /* Bordes definidos pero sutiles */
+    --accent-gold: #f59e0b;       /* Dorado para títulos y logros */
+    --accent-green: #10b981;      /* Verde esmeralda para éxitos y progreso */
+    --accent-danger: #ef4444;     /* Rojo para advertencias y llamadas a la realidad */
+    --text-main: #f3f4f6;         /* Texto principal brillante */
+    --text-sub: #9ca3af;          /* Texto secundario gris suavizado */
+}
+
+/* RESET GENERAL Y AJUSTES TÁCTILES PARA CELULAR */
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Elimina el cuadro azul al tocar en Android */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 12px;
+    padding-bottom: 50px;
+}
+
+header {
+    text-align: center;
+    padding: 10px 0 15px 0;
+}
+
+h1 {
+    font-size: 18pt;
+    margin: 0;
+    color: var(--accent-gold);
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(245, 158, 11, 0.2); /* Resplandor dorado suave */
+}
+
+.subtitle {
+    font-size: 9pt;
+    color: var(--text-sub);
+    margin-top: 4px;
+}
+
+/* ========================================================
+   BANNERS DE NOTIFICACIÓN Y ALERTAS
+   ======================================================== */
+.alerta-inercia {
+    background: linear-gradient(135deg, #7f1d1d, #450a0a);
+    border: 1px solid #ef4444;
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.25);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.alerta-inercia h3 {
+    margin: 0 0 5px 0;
+    color: #fca5a5;
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.alerta-inercia p {
+    margin: 0;
+    font-size: 10pt;
+    color: #fee2e2;
+    line-height: 1.4;
+}
+
+.banner-motivacion {
+    background: linear-gradient(135deg, #064e3b, #022c22);
+    border: 1px solid #10b981;
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.banner-motivacion h3 {
+    margin: 0 0 5px 0;
+    color: #6ee7b7;
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.banner-motivacion p {
+    margin: 0;
+    font-size: 10pt;
+    color: #ecfdf5;
+    line-height: 1.4;
+}
+
+/* ========================================================
+   PERFIL DE USUARIO Y PUNTAJE
+   ======================================================== */
+.perfil-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.label-forjador {
+    font-size: 8pt; 
+    color: var(--text-sub);
+}
+
+.input-usuario {
+    background: transparent;
+    border: none;
+    color: var(--accent-gold);
+    font-size: 12pt;
+    font-weight: bold;
+    width: 140px;
+    border-bottom: 1px dashed var(--accent-gold);
+    padding-bottom: 2px;
+}
+
+.input-usuario:focus {
+    outline: none;
+    border-bottom-style: solid;
+}
+
+.puntos-badge {
+    background-color: #1e1b4b;
+    color: #818cf8;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 10pt;
+    font-weight: bold;
+    border: 1px solid #3730a3;
+    box-shadow: 0 2px 6px rgba(55, 48, 163, 0.3);
+}
+
+/* ========================================================
+   VISOR DE CONSTRUCCIÓN DE LA CASITA Y BARRA
+   ======================================================== */
+.visor-construccion {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.casita-emoji {
+    font-size: 50pt;
+    margin: 5px 0;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.estado-casa-texto {
+    font-size: 10pt;
+    font-weight: bold;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+}
+
+.barra-contenedor {
+    background-color: #030712;
+    border-radius: 20px;
+    height: 20px;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    position: relative;
+}
+
+.barra-progreso {
+    background: linear-gradient(90deg, #d97706, #10b981);
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease-in-out;
+    border-radius: 20px;
+}
+
+.porcentaje-texto {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 8.5pt;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+}
+
+/* ========================================================
+   TARJETAS Y ELEMENTOS DE TAREAS
+   ======================================================== */
+.seccion-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.titulo-seccion {
+    font-size: 11pt;
+    font-weight: bold;
+    color: var(--accent-gold);
+    margin-top: 0;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contador-badge {
+    font-size: 9pt; 
+    color: var(--text-sub);
+}
+
+.tarea-item {
+    display: flex;
+    align-items: center;
+    background-color: #030712;
+    border: 1px solid var(--card-border);
+    padding: 11px 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.tarea-item:active {
+    transform: scale(0.98); /* Feedback táctil al presionar */
+}
+
+.tarea-item:last-child {
+    margin-bottom: 0;
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--text-sub);
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10pt;
+    color: transparent;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+/* ESTADO TAREA COMPLETADA */
+.tarea-item.completada {
+    opacity: 0.55;
+    background-color: #064e3b33;
+    border-color: #065f46;
+}
+
+.tarea-item.completada .checkbox-custom {
+    background-color: var(--accent-green);
+    border-color: var(--accent-green);
+    color: #ffffff;
+}
+
+.tarea-item.completada .tarea-texto {
+    text-decoration: line-through;
+    color: var(--text-sub);
+}
+
+.tarea-texto {
+    font-size: 10pt;
+    line-height: 1.3;
+}
+
+/* ========================================================
+   DIARIO Y ÁNIMO
+   ======================================================== */
+.grid-animo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.btn-animo {
+    background-color: #030712;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 8px 4px;
+    text-align: center;
+    font-size: 14pt;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.btn-animo:active {
+    transform: scale(0.95);
+}
+
+.btn-animo.seleccionado {
+    border-color: var(--accent-gold);
+    background-color: #1e1b4b;
+}
+
+textarea {
+    width: 100%;
+    height: 65px;
+    background-color: #030712;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: #fff;
+    padding: 10px;
+    font-size: 9.5pt;
+    resize: none;
+    box-sizing: border-box;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+/* BOTÓN DE REINICIO */
+.btn-reset {
+    background-color: transparent;
+    color: var(--text-sub);
+    border: 1px solid var(--card-border);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 9pt;
+    width: 100%;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-reset:active {
+    background-color: #1f2937;
+}
+
+footer {
+    text-align: center;
+    font-size: 8pt;
+    color: var(--text-sub);
+    margin-top: 25px;
+}
+
+/* ANIMACIÓN SUAVE */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
