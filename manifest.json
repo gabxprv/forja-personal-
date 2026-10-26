@@ -1,0 +1,19 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "La Forja Personal",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "El_titan",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "id": "/",
+  "description": "Sistema estoico de productividad, hábitos y gamificación personal.",
+  "lang": "es",
+  "categories": [
+    "education",
+    "fitness",
+    "lifestyle"
+  ]
+}
